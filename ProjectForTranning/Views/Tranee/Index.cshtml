@@ -1,0 +1,24 @@
+﻿@model List<Tranee>
+  
+    <table title="Tranees" class="table table-bordered table-hover">
+        <thead>
+           <tr>
+                  <th>Name</th>
+                  <th>Address</th>
+                  <th>Grade</th>
+           </tr>
+        </thead>
+        <tbody>
+            @foreach(var x in Model)
+            {
+                <tr>
+                    <a href="">
+                    <td>@x.Name</td>
+                    </a>
+                    <td>@x.Address</td>
+                    <td>@x.Grade</td>
+                    
+                </tr>
+            }
+        </tbody>
+    </table>

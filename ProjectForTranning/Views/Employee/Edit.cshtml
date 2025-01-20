@@ -1,0 +1,58 @@
+﻿@model Empolyee
+
+@{
+    ViewData["Title"] = "Edit Employee";
+}
+
+<h1 class="text-center mb-4">Edit Employee</h1>
+
+<form asp-action="SaveEdit" asp-controller="Employee" method="post" class="p-4 border rounded shadow-sm">
+    <div class="mb-3">
+        <label asp-for="Name" class="form-label">Employee Name</label>
+        <input asp-for="Name" value="@Model.Name" class="form-control" required />
+    </div>
+
+    <div class="mb-3">
+        <label asp-for="Address" class="form-label">Address</label>
+        <input asp-for="Address" value="@Model.Address" class="form-control" required />
+    </div>
+
+    <div class="mb-3">
+        <label asp-for="ImagURL" class="form-label">Image URL</label>
+        <input asp-for="ImagURL" value="@Model.ImagURL" class="form-control" required />
+    </div>
+
+    <div class="mb-3">
+        <label asp-for="JobTitle" class="form-label">Job Title</label>
+        <input asp-for="JobTitle" value="@Model.JobTitle" class="form-control" required />
+    </div>
+
+    <!-- Hidden fields for Id and DepartmentID -->
+    <div class="mb-3">
+        <input type="hidden" name="Id" value="@Model.Id" />
+    </div>
+
+    <div class="mb-3">
+        <input type="hidden" name="DepartmentID" value="@Model.DepartmentID" />
+    </div>
+
+    <div class="text-center">
+        <input type="submit" class="btn btn-success btn-lg" value="Save" />
+    </div>
+</form>
+
+<!-- JavaScript for Button Hover Effect -->
+<script>
+    const submitButton = document.querySelector('input[type="submit"]');
+    submitButton.addEventListener('mouseenter', function () {
+        submitButton.style.backgroundColor = '#28a745';
+        submitButton.style.transition = 'background-color 0.3s ease';
+    });
+
+    submitButton.addEventListener('mouseleave', function () {
+        submitButton.style.backgroundColor = '#4CAF50';
+    });
+</script>
+
+<!-- Bootstrap CSS for styling -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">

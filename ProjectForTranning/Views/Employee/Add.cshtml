@@ -1,0 +1,68 @@
+﻿@model EmployeeAndDept
+
+@{
+    ViewData["Title"] = "Add New Employee";
+    SelectList? Departs = new SelectList(Model.Departments);
+}
+
+<h1 class="text-center mb-4">Add New Employee</h1>
+
+<form asp-action="SaveEmp" asp-controller="Employee" method="post" class="p-4 border rounded shadow-sm">
+
+    <div class="mb-3">
+        <label asp-for="Name" class="form-label">Employee Name</label>
+        <input asp-for="Name" value="@Model.Name" class="form-control" required />
+    </div>
+
+    <div class="mb-3">
+        <label asp-for="Address" class="form-label">Address</label>
+        <input asp-for="Address" value="@Model.Address" class="form-control" required />
+    </div>
+
+    <div class="mb-3">
+        <label asp-for="ImagURL" class="form-label">Image URL</label>
+        <input asp-for="ImagURL" value="@Model.ImagURL" class="form-control" required />
+    </div>
+
+    <div class="mb-3">
+        <label asp-for="JobTitle" class="form-label">Job Title</label>
+        <input asp-for="JobTitle" value="@Model.JobTitle" class="form-control" required />
+    </div>
+
+    <div class="mb-3">
+        <label for="DepartmentID" class="form-label">Select Department</label>
+        <select name="DepartmentID" class="form-control" required>
+            <option value="">--Choose Department--</option>
+            @foreach (var i in Model.Departments)
+            {
+                if (i.Id == Model.DepartmentID)
+                {
+                    <option selected value="@i.Id">@i.Name</option>
+                }
+                else
+                {
+                    <option value="@i.Id">@i.Name</option>
+                }
+            }
+        </select>
+    </div>
+
+    <div class="text-center">
+        <input type="submit" class="btn btn-success btn-lg" value="Save" />
+    </div>
+
+</form>
+
+<!-- JavaScript -->
+<script>
+    // إضافة تأثير على زر الحفظ عند التمرير عليه
+    const submitButton = document.querySelector('input[type="submit"]');
+    submitButton.addEventListener('mouseenter', function () {
+        submitButton.style.backgroundColor = '#28a745';
+        submitButton.style.transition = 'background-color 0.3s ease';
+    });
+
+    submitButton.addEventListener('mouseleave', function () {
+        submitButton.style.backgroundColor = '#4CAF50';
+    });
+</script>
